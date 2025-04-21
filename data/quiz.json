@@ -1,0 +1,13 @@
+[
+    {
+      "question": "Which borough is known as 'The World Borough'?",
+      "options": ["Brooklyn", "Queens", "Bronx", "Staten Island"],
+      "correct": "Queens"
+    },
+    {
+      "question": "What food is most associated with Manhattan?",
+      "options": ["Pizza", "Bagels", "Chopped Cheese", "Tacos"],
+      "correct": "Bagels"
+    }
+  ]
+  

@@ -1,0 +1,15 @@
+<h2>{{ lesson.title }}</h2>
+<p>{{ lesson.text }}</p>
+<img src="{{ url_for('static', filename=lesson.image) }}" class="img-fluid">
+
+<div class="mt-4">
+    {% if lesson_num > 1 %}
+    <a class="btn btn-secondary" href="{{ url_for('learn', lesson_num=lesson_num - 1) }}">← Back</a>
+    {% endif %}
+    
+    {% if lesson_num < total %}
+    <a class="btn btn-primary" href="{{ url_for('learn', lesson_num=lesson_num + 1) }}">Next →</a>
+    {% else %}
+    <a class="btn btn-success" href="{{ url_for('quiz', question_num=1) }}">Start Quiz</a>
+    {% endif %}
+</div>

@@ -10,14 +10,7 @@
     </style>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light border">
-    <div class="container-fluid justify-content-center">
-        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-        <a class="nav-link" href="{{ url_for('learn', lesson_num=1) }}">Culinary Trends in NYC</a>
-        <a class="nav-link" href="{{ url_for('quiz', question_num=1) }}">Quiz</a>
-    </div>
-</nav>
+    {% include 'shared_navbar.html' %}
 
 <h1>Culinary Trends in NYC</h1>
 <h4>Learn about new cultures through culinary exploration on social media</h4>

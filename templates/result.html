@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+
+    {% include 'shared_navbar.html' %}
+
+    <div class="container text-center">
+        <h1 class="mb-3">🎉 Quiz Complete!</h1>
+
+        {% if score is not none %}
+            <p class="lead">You scored <strong>{{ score }}</strong> out of <strong>{{ total }}</strong>.</p>
+        {% else %}
+            <p class="lead">Thanks for completing the quiz!</p>
+            <p class="text-muted">Scoring will be added in the final version.</p>
+        {% endif %}
+
+        <a href="{{ url_for('home') }}" class="btn btn-primary mt-4">Back to Home</a>
+    </div>
+
+</body>
+</html>

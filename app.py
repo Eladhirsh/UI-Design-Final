@@ -19,13 +19,21 @@ def home():
 
 @app.route('/learn/<int:lesson_num>')
 def learn(lesson_num):
-    # Load from JSON to make things modular
-    with open("data/lessons.json") as f:
+    with open("data/lessons.json", encoding="utf-8") as f:
         lessons = json.load(f)
-    print("LOADED LESSON:", lessons[lesson_num - 1])
+
+    # Optional: track when the user entered the lesson
+    if 'lesson_times' not in session:
+        session['lesson_times'] = {}
+    session['lesson_times'][f'lesson_{lesson_num}'] = str(datetime.now())
+
+    print(f"User entered lesson {lesson_num} at {session['lesson_times'][f'lesson_{lesson_num}']}")
+
     total_lessons = len(lessons)
-    return render_template('learn.html', lesson=lessons[lesson_num - 1],
-                           lesson_num=lesson_num, total=total_lessons)
+    return render_template('learn.html',
+                           lesson=lessons[lesson_num - 1],
+                           lesson_num=lesson_num,
+                           total=total_lessons)
 
 
 @app.route('/quiz/<int:question_num>', methods=['GET', 'POST'])
@@ -44,12 +52,15 @@ def quiz(question_num):
 
     return render_template('quiz.html', question=quiz_data[question_num - 1],
                            question_num=question_num, total=total_questions)
-# Result Route
 @app.route('/result')
 def result():
     user_answers = session.get('quiz_answers', [])
-    score = sum(1 for ans in user_answers if ans == "correct")  # Placeholder scoring logic
-    return render_template('result.html', score=score, total=len(user_answers))
+    total = len(user_answers)
+
+    # Optional: show fake score or just None
+    score = None  # Replace with real scoring later
+
+    return render_template('result.html', score=score, total=total)
 
 if __name__ == '__main__':
     app.run(debug=True)

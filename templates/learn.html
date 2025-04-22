@@ -2,24 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson Page</title>
+    <title>Testing Learn</title>
 </head>
 <body>
-    <h1>Lesson {{ lesson_num }}</h1>
-    <p>{{ lesson.title }}</p>
-    <p>{{ lesson.text }}</p>
-   <!-- <img src="{{ url_for('static', filename=lesson.image) }}" alt="Lesson Image" style="max-width: 400px;"> -->
-
-    <br><br>
-
-    {% if lesson_num > 1 %}
-    <a href="{{ url_for('learn', lesson_num=lesson_num - 1) }}">← Back</a>
-    {% endif %}
-
-    {% if lesson_num < total %}
-    <a href="{{ url_for('learn', lesson_num=lesson_num + 1) }}">Next →</a>
-    {% else %}
-    <a href="{{ url_for('quiz', question_num=1) }}">Start Quiz</a>
-    {% endif %}
+    <p>🧪 Test line 1</p>
+    {% include 'shared_navbar.html' %}
+    <p>🧪 Test line 2</p>
 </body>
 </html>

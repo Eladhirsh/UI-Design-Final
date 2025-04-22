@@ -5,28 +5,49 @@
     <title>Culinary Trends in NYC</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { text-align: center; padding: 20px; }
-        .nav-link { margin: 10px; }
+        .feature-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+        .feature-card img {
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
     </style>
 </head>
-<body>
+<body class="p-4">
+
     {% include 'shared_navbar.html' %}
 
-<h1>Culinary Trends in NYC</h1>
-<h4>Learn about new cultures through culinary exploration on social media</h4>
+    <div class="container text-center">
+        <h1 class="display-4 mb-3">Culinary Trends in NYC</h1>
+        <p class="lead mb-5">Learn about new cultures through culinary exploration on social media</p>
 
-<div class="row justify-content-center mt-4">
-    <div class="col-md-4">
-        <p>Explore New York’s Culinary Scene and its Most Updated Trends!!!</p>
-        <img src="{{ url_for('static', filename='map_trends.png') }}" class="img-fluid" alt="NYC Map">
-    </div>
-    <div class="col-md-4">
-        <p>Test yourself on food trends on social media!</p>
-        <img src="{{ url_for('static', filename='social_media_icons.png') }}" class="img-fluid" alt="Social Media">
-    </div>
-</div>
+        <div class="row justify-content-center g-4">
+            <div class="col-md-5">
+                <div class="feature-card">
+                    <img src="{{ url_for('static', filename='map_trends.png') }}" class="img-fluid mb-3" alt="NYC Map">
+                    <h5>Explore NYC’s Diverse Food Scene</h5>
+                    <p class="text-muted">Discover cultural trends from Queens to the Bronx!</p>
+                </div>
+            </div>
 
-<a href="{{ url_for('learn', lesson_num=1) }}" class="btn btn-primary mt-4">Start Learning</a>
+            <div class="col-md-5">
+                <div class="feature-card">
+                    <img src="{{ url_for('static', filename='social_media_icons.png') }}" class="img-fluid mb-3" alt="Social Media Icons">
+                    <h5>Test Your Trend Knowledge</h5>
+                    <p class="text-muted">See how well you know what’s trending on TikTok & Instagram!</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="{{ url_for('learn', lesson_num=1) }}" class="btn btn-lg btn-primary mt-5 px-5">Start Learning</a>
+    </div>
 
 </body>
 </html>

@@ -20,13 +20,18 @@
                     <label class="form-check-label" for="option{{ loop.index }}">{{ option }}</label>
                 </div><br>
             {% endfor %}
+        
             <button class="btn btn-primary mt-3" type="submit">Next →</button>
         </form>
-
+        
         {% if question_num > 1 %}
-          <a href="{{ url_for('quiz', question_num=question_num - 1) }}" class="btn btn-secondary mt-2">← Back</a>
+            <div class="mt-2">
+                <a href="{{ url_for('quiz', question_num=question_num - 1) }}" class="btn btn-outline-secondary">
+                    ← Back
+                </a>
+            </div>
         {% endif %}
-    </div>
+        
 
 </body>
 </html>

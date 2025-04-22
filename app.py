@@ -55,12 +55,16 @@ def quiz(question_num):
 @app.route('/result')
 def result():
     user_answers = session.get('quiz_answers', [])
-    total = len(user_answers)
+    with open("data/quiz.json", encoding="utf-8") as f:
+        quiz_data = json.load(f)
 
-    # Optional: show fake score or just None
-    score = None  # Replace with real scoring later
+    score = 0
+    for user_answer, q in zip(user_answers, quiz_data):
+        if user_answer == q["correct"]:
+            score += 1
 
-    return render_template('result.html', score=score, total=total)
+    return render_template("result.html", score=score, total=len(quiz_data))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

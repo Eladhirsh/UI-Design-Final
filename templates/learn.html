@@ -1,15 +1,25 @@
-<h2>{{ lesson.title }}</h2>
-<p>{{ lesson.text }}</p>
-<img src="{{ url_for('static', filename=lesson.image) }}" class="img-fluid">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson Page</title>
+</head>
+<body>
+    <h1>Lesson {{ lesson_num }}</h1>
+    <p>{{ lesson.title }}</p>
+    <p>{{ lesson.text }}</p>
+   <!-- <img src="{{ url_for('static', filename=lesson.image) }}" alt="Lesson Image" style="max-width: 400px;"> -->
 
-<div class="mt-4">
+    <br><br>
+
     {% if lesson_num > 1 %}
-    <a class="btn btn-secondary" href="{{ url_for('learn', lesson_num=lesson_num - 1) }}">← Back</a>
+    <a href="{{ url_for('learn', lesson_num=lesson_num - 1) }}">← Back</a>
     {% endif %}
-    
+
     {% if lesson_num < total %}
-    <a class="btn btn-primary" href="{{ url_for('learn', lesson_num=lesson_num + 1) }}">Next →</a>
+    <a href="{{ url_for('learn', lesson_num=lesson_num + 1) }}">Next →</a>
     {% else %}
-    <a class="btn btn-success" href="{{ url_for('quiz', question_num=1) }}">Start Quiz</a>
+    <a href="{{ url_for('quiz', question_num=1) }}">Start Quiz</a>
     {% endif %}
-</div>
+</body>
+</html>

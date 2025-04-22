@@ -1,25 +1,32 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from datetime import datetime
+import json
+
 
 app = Flask(__name__)
 app.secret_key = "super_secret_key"  # Required for session handling
 
 # Homepage Route
 @app.route('/')
+@app.route('/home')
 def home():
+    print("✅ Home route reached!")  # 🟢 Proper indentation here
     session['start_time'] = str(datetime.now())
     session['choices'] = []
     session['quiz_answers'] = []
     return render_template('home.html')
+
 
 @app.route('/learn/<int:lesson_num>')
 def learn(lesson_num):
     # Load from JSON to make things modular
     with open("data/lessons.json") as f:
         lessons = json.load(f)
+    print("LOADED LESSON:", lessons[lesson_num - 1])
     total_lessons = len(lessons)
     return render_template('learn.html', lesson=lessons[lesson_num - 1],
                            lesson_num=lesson_num, total=total_lessons)
+
 
 @app.route('/quiz/<int:question_num>', methods=['GET', 'POST'])
 def quiz(question_num):

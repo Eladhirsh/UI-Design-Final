@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taste The Boroughs</title>
+
+  <!-- Bootstrap CSS -->
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet">
+  
+  <!-- Unified Style -->
+  <link href="{{ url_for('static', filename='css/blog.css') }}" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="/">Taste NYC</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav" aria-controls="navbarNav"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/blog">Learning</a></li>
+          <li class="nav-item"><a class="nav-link" href="/quiz">Quiz</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Main Content Section -->
+  <div class="quiz-section">
+    <div class="card-container text-center">
+      <h2 class="title-text mb-4">Taste The Boroughs!</h2>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+
+        <!-- Manhattan Card -->
+        <div class="col">
+          <div class="card h-100 text-white bg-dark border-light card-custom">
+            <div class="card-body">
+              <h5 class="card-title text-info">Manhattan</h5>
+              <p class="card-text">Bagels, pastrami, pizza, and halal carts define the borough’s rich culinary legacy and cultural blend.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brooklyn Card -->
+        <div class="col">
+          <div class="card h-100 text-white bg-dark border-light card-custom">
+            <div class="card-body">
+              <h5 class="card-title text-info">Brooklyn</h5>
+              <p class="card-text">From artisan pizza to jerk chicken and rainbow bagels, Brooklyn fuses old traditions with creative flair.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bronx Card -->
+        <div class="col">
+          <div class="card h-100 text-white bg-dark border-light card-custom">
+            <div class="card-body">
+              <h5 class="card-title text-info">The Bronx</h5>
+              <p class="card-text">Bold bites like chopped cheese, mofongo, and Italian heroes show the borough’s Afro-Caribbean and Italian roots.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Queens Card -->
+        <div class="col">
+          <div class="card h-100 text-white bg-dark border-light card-custom">
+            <div class="card-body">
+              <h5 class="card-title text-info">Queens</h5>
+              <p class="card-text">The world on a plate—Indian dosas, dumplings, arepas, and more make Queens NYC’s most globally rich borough.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Staten Island Card -->
+        <div class="col">
+          <div class="card h-100 text-white bg-dark border-light card-custom">
+            <div class="card-body">
+              <h5 class="card-title text-info">Staten Island</h5>
+              <p class="card-text">Classic Italian-American comfort like Sicilian pizza, cannoli, and seafood pasta shine by the sea.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation Button -->
+      <a href="{{ url_for('learn', lesson_id=1) }}" class="btn start-btn mt-4">
+        Next <i class="fas fa-chevron-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+/* results.css */
+
+/* ── Import fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Quicksand:ital,wght@0,400;0,600&display=swap');
+
+/* ── Base & Background ───────────────────────────────────────────────────── */
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Katz%27s_Delicatessen_%2851623899326%29.jpg/2560px-Katz%27s_Delicatessen_%2851623899326%29.jpg")
+    no-repeat center center fixed;
+  background-size: cover;
+  color: #c9d1d9;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Navbar (reuse your custom-navbar rules) ─────────────────────────────── */
+.custom-navbar {
+  background: rgba(13, 17, 23, 0.7);
+  backdrop-filter: blur(10px);
+}
+.custom-navbar .navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  color: #89cff0;
+  font-weight: 700;
+}
+.custom-navbar .nav-link {
+  font-family: 'Quicksand', sans-serif;
+  color: #d1d1d9;
+  font-weight: 500;
+  margin-right: 10px;
+}
+.custom-navbar .nav-link:hover {
+  color: #ffffff;
+}
+.custom-navbar .nav-link.active {
+  color: #6a5acd;
+  font-weight: 700;
+}
+
+/* ── Results Section & Card ──────────────────────────────────────────────── */
+.results-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 1rem;
+  min-height: calc(100vh - 56px); /* account for navbar height */
+  box-sizing: border-box;
+}
+
+.card-container {
+  background: rgba(13, 17, 23, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ── Heading & Prompt ───────────────────────────────────────────────────── */
+h2, .score-text, .prompt-text {
+  font-family: 'Montserrat', sans-serif;
+  color: #89cff0;
+  text-align: center;
+}
+.score-text {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.prompt-text {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.results-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.results-buttons .btn {
+  font-family: 'Quicksand', sans-serif;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+.results-buttons .btn-primary {
+  background: linear-gradient(135deg, #3498db, #6a5acd);
+  border: none;
+  color: white;
+}
+.results-buttons .btn-primary:hover {
+  transform: translateY(-3px);
+}
+.results-buttons .btn-secondary {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #d1d1d9;
+}
+.results-buttons .btn-secondary:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ── Feedback Items ─────────────────────────────────────────────────────── */
+.feedback-item {
+  margin-bottom: 1.5rem;
+}
+.feedback-item p {
+  margin-bottom: 0.25rem;
+  color: #e1e5ea;
+}
+
+/* ── Map + Dish Overlay ─────────────────────────────────────────────────── */
+.map-container {
+  position: relative;
+  margin: 1rem 0;
+}
+.map-container img {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+}
+.map-container img.dish {
+  position: absolute;
+  /* center at the given left/top */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  z-index: 2;
+}

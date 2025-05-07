@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% set is_homepage = true %}
+
+{% block extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/home.css') }}"
+/>
+{% endblock %}
+
+{% block navbar %}
+{# no navbar on homepage #}
+{% endblock %}
+
+{% block content %}
+<div class="nyc-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="card-container text-center">
+          <h1 class="title-text">Taste NYC</h1>
+          <p class="subtitle-text">
+            Embark on a culinary expedition through all five boroughs—discover the iconic flavors, hidden gems, and neighborhood stories behind New York City’s most beloved dishes
+          </p>
+
+          <a
+            href="{{ url_for('blog') }}"
+            class="btn start-btn"
+          >
+            Start Learning <i class="fas fa-chevron-right"></i>
+          </a>
+
+          <div class="mt-4">
+            <a
+              href="{{ url_for('quiz') }}"
+              class="btn quiz-btn"
+            >
+              Take the Quiz <i class="fas fa-check-circle"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="star-field" id="star-field"></div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}

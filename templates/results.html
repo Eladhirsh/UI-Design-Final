@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Quiz Results</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom results styling -->
+  <link href="{{ url_for('static', filename='css/results.css') }}" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="/">Taste NYC</a>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/learn/1">Learning</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/quiz">Quiz</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="results-section">
+    <div class="card-container">
+      <h2 class="text-center mb-2">Your Results</h2>
+      <p class="text-center score-text">Score: <strong>{{ score }} / {{ total }}</strong></p>
+
+      <p class="text-center prompt-text mb-4">
+        {% if score <= 3 %}
+          🌀 Just getting started — try again!
+        {% elif score <= 6 %}
+          ⚡ Nice effort! You’re halfway there.
+        {% elif score <= 8 %}
+          🔥 Great job! You’re almost a pro.
+        {% elif score == 9 %}
+          🥈 So close! Just one away!
+        {% else %}
+          🏆 Perfect! You nailed it!
+        {% endif %}
+      </p>
+
+      <!-- Buttons right below the prompt -->
+      <div class="results-buttons mb-4">
+        <a href="{{ url_for('reset_quiz') }}" class="btn btn-primary">Retake Quiz</a>
+        <a href="{{ url_for('reset_home') }}" class="btn btn-secondary">Return Home</a>
+      </div>
+
+      <hr class="border-light">
+
+      {% for f in feedback %}
+      <div class="feedback-item mb-4">
+        <p class="fw-semibold text-white mb-1">
+          Q{{ f.num }}: {{ f.text }}
+        </p>
+
+        {% if f.type == 'drag_and_drop' %}
+          <div class="feedback-drag-result mb-2">
+            <span class="badge 
+                 {% if f.is_correct %}bg-success{% else %}bg-danger{% endif %}">
+              {% if f.is_correct %}
+                ✓ Selected Correct Picture
+              {% else %}
+                ✗ Selected Wrong Picture
+              {% endif %}
+            </span>
+          </div>
+        {% endif %}
+
+        <p class="mb-1">
+          Your answer:
+          <span class="{{ 'text-success' if f.is_correct else 'text-danger' }}">
+            {{ f.user or '(No answer)' }}
+          </span>
+        </p>
+        <p class="mb-0">
+          Correct answer:
+          <span class="text-success">{{ f.correct }}</span>
+        </p>
+      </div>
+      {% endfor %}
+
+      <!-- Buttons also at the bottom -->
+      <div class="results-buttons mt-4">
+        <a href="{{ url_for('reset_quiz') }}" class="btn btn-primary">Retake Quiz</a>
+        <a href="{{ url_for('reset_home') }}" class="btn btn-secondary">Return Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

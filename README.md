@@ -1,0 +1,1 @@
+UI-Design-Final is a Flask web app with a Bootstrap-based responsive UI and interactive quizzes. To run it locally, clone the repo, create and activate a Python virtual environment, then install dependencies (pip install -r requirements.txt or pip install flask). Finally, start the server with flask run (or python app.py) and navigate to http://127.0.0.1:5000/ in your browser.
